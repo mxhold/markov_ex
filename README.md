@@ -15,6 +15,6 @@ This should only require Ruby since the `markov` binary embeds Elixir.
 
 3. Install the Slack gem by doing `bundle install`
 4. Run `./slack_to_text your_token your_username > my_slack_messages.txt` (this can take a few seconds)
-5. Run `./markov my_slack_messages.txt 100`
+5. Run `./markov my_slack_messages.txt 100` to generate 100 words
 
 That's it!
