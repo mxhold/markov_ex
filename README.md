@@ -1,20 +1,19 @@
 # Markov
 
-**TODO: Add description**
+Let's generate some text from Slack messages!
 
-## Installation
+This should only require Ruby since the `markov` binary embeds Elixir.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+1. Generate an API token at <https://api.slack.com/docs/oauth-test-tokens>
+2. Pull down the repo and `cd` into it:
 
-  1. Add markov to your list of dependencies in `mix.exs`:
+    ````
+    git clone https://github.com/mxhold/markov_ex.git
 
-        def deps do
-          [{:markov, "~> 0.0.1"}]
-        end
+    cd markov_ex
+    ````
 
-  2. Ensure markov is started before your application:
+3. Run `./slack_to_text your_token your_username > my_slack_messages.txt` (this can take a few seconds)
+4. Run `./markov my_slack_messages.txt 100`
 
-        def application do
-          [applications: [:markov]]
-        end
-
+That's it!

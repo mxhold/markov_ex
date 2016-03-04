@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+require 'slack'
+
+# Usage: ./slack_to_text <token> <username>
+
+def search(client, query, page)
+  client.search_messages(:query => query, page: page, count: 1000)
+end
+
+def print_matches(result)
+  puts result["messages"]["matches"].map { |m| m["text"] }.join("\n")
+end
+
+token = ARGV.shift
+username = ARGV.shift
+
+client = Slack::Client.new(token: token)
+
+query = "from:#{username}"
+
+page1 = search(client, query, 1)
+
+print_matches(page1)
+
+page_count = page1["messages"]["pagination"]["page_count"]
+
+(2..page_count).map do |page|
+  print_matches search(client, query, page)
+end
+
