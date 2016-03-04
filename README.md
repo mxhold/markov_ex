@@ -2,7 +2,7 @@
 
 Let's generate some text from Slack messages!
 
-This should only require Ruby since the `markov` binary embeds Elixir.
+Make sure you have Ruby, Bundler, and Erlang installed (Elixir is not required since it is embedded in the `./markov` script).
 
 1. Generate an API token at <https://api.slack.com/docs/oauth-test-tokens>
 2. Pull down the repo and `cd` into it:
