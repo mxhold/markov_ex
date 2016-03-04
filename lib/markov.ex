@@ -1,6 +1,8 @@
 defmodule Markov do
   def parse(string) do
-    parts = string |> String.split
+    parts = string
+            |> normalize
+            |> String.split
     [nil, nil] ++ parts ++ [nil, nil]
     |> Enum.chunk(3, 1)
     |> Enum.reduce(%{}, fn [a, b, suffix], acc ->
@@ -9,6 +11,15 @@ defmodule Markov do
         [suffix | current]
       end)
     end)
+  end
+
+  def normalize(string) do
+    string
+    |> String.replace_leading("\uFEFF", "") # Remove Unicode byte order mark
+    |> String.replace("\n", " ")
+    |> String.codepoints
+    |> Enum.filter(fn char -> String.printable?(char) end)
+    |> Enum.join
   end
 
   def generate(string, count) when is_binary(string), do: generate(parse(string), count)
