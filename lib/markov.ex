@@ -11,7 +11,9 @@ defmodule Markov do
     end)
   end
 
-  def generate(string, count), do: generate(parse(string), "", nil, nil, count)
+  def generate(string, count) when is_binary(string), do: generate(parse(string), count)
+
+  def generate(table, count), do: generate(table, "", nil, nil, count)
 
   def generate(_, result, _, _, 0), do: result
 
@@ -21,7 +23,13 @@ defmodule Markov do
     if is_nil(next) do
       result
     else
-      generate(table, result <> " " <> next, w2, next, count - 1)
+      if result == "" do
+        result = next
+      else
+        result = result <> " " <> next
+      end
+
+      generate(table, result, w2, next, count - 1)
     end
   end
 end

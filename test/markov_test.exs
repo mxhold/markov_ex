@@ -15,8 +15,9 @@ defmodule MarkovTest do
       }
   end
 
-  #test "generate" do
-  #  assert Markov.generate("I like cake. I like pie.", "I", 2) ==
-  #    "I like"
-  #end
+  test "generate" do
+    :rand.seed(:exsplus, {3, 4, 5})
+    assert Markov.generate("I like cake. I like pie.", 10) ==
+      "I like cake. I like cake. I like pie."
+  end
 end
