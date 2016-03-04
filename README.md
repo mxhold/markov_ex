@@ -13,7 +13,8 @@ This should only require Ruby since the `markov` binary embeds Elixir.
     cd markov_ex
     ````
 
-3. Run `./slack_to_text your_token your_username > my_slack_messages.txt` (this can take a few seconds)
-4. Run `./markov my_slack_messages.txt 100`
+3. Install the Slack gem by doing `bundle install`
+4. Run `./slack_to_text your_token your_username > my_slack_messages.txt` (this can take a few seconds)
+5. Run `./markov my_slack_messages.txt 100`
 
 That's it!
